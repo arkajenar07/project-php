@@ -10,13 +10,15 @@ if(isset($_POST['submit'])) {
     
     if($result > 0) {
         $user = mysqli_fetch_assoc($query);
-        $_SESSION['user'] = $user;
-        header("Location: index.php");
+        $_SESSION['id'] = $user['id'];
+        header("Location: ../admin/index.php");
     } else {
         echo "Email atau password salah";
     }
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

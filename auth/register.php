@@ -1,7 +1,7 @@
 <?php
 include('../database/connection.php');
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['regis'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -9,9 +9,9 @@ if (isset($_POST['submit'])) {
     $query = mysqli_query($connection, "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')");
 
     if ($query) {
-        header("Location: login.php");
+        header("Location: ./login.php");
     } else {
-        echo "Gagal mendaftar";
+        echo "<p style='color: red;'>Gagal mendaftar</p>";
     }
 }
 ?>
@@ -32,13 +32,20 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="input">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email1">
             </div>
             <div class="input">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password">
             </div>
-            <button type="submit" name="submit">Register</button>
+            <div>
+                <label for="roles"></label>
+                <select name="roles" id="roles">
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+            <button type="submit" name="regis">Register</button>
         </form>
     </section>
 </body>
